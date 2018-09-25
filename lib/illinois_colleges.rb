@@ -1,5 +1,3 @@
-require "illinois_colleges/version"
+require_relative "./illinois_colleges/version"
+require_relative './illinois_colleges/cli'
 
-module IllinoisColleges
-  # Your code goes here...
-end
