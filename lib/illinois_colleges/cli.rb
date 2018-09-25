@@ -29,6 +29,12 @@ class IllinoisColleges::CLI
         puts "More info on Elmhurst College..."
       when "2"
         puts "More info on Illinois State University..."
+      when "3"
+        puts "More info on Northwester University..."
+      when "4"
+        puts "More info on the University of Chicago..."
+      when "5"
+        puts "More info on the University of Illinois..."
       when "list"
         list_colleges
       else
