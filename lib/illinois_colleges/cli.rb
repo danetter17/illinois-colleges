@@ -9,14 +9,16 @@ class IllinoisColleges::CLI
   end
   
   def list_colleges
-    puts "Colleges and universities in the state of Illinois:"
-    puts <<~DOC
-      1. Elmhurst College
-      2. Illinois State University
-      3. Northwestern University
-      4. University of Chicago
-      5. University of Illinois
-    DOC
+    # puts "Colleges and universities in the state of Illinois:"
+    # puts <<~DOC
+    #   1. Elmhurst College
+    #   2. Illinois State University
+    #   3. Northwestern University
+    #   4. University of Chicago
+    #   5. University of Illinois
+    # DOC
+    
+    @colleges = IllinoisColleges::College.college
   end
   
   def menu
