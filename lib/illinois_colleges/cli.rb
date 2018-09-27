@@ -9,16 +9,12 @@ class IllinoisColleges::CLI
   end
   
   def list_colleges
-    # puts "Colleges and universities in the state of Illinois:"
-    # puts <<~DOC
-    #   1. Elmhurst College
-    #   2. Illinois State University
-    #   3. Northwestern University
-    #   4. University of Chicago
-    #   5. University of Illinois
-    # DOC
+    puts "Colleges and universities in the state of Illinois:"
     
     @colleges = IllinoisColleges::College.college
+    @colleges.each.with_index(1) {|college, i|
+      puts "#{i}. #{college.name} - #{college.location} - #{college.size}"}
+    end
   end
   
   def menu
@@ -26,18 +22,11 @@ class IllinoisColleges::CLI
     while input != "exit"
       puts "Please enter the number of the institution that you would like more information on, type 'list' to list the institutions again, or type 'exit':"
       input = gets.strip.downcase
-      case input
-      when "1"
-        puts "More info on Elmhurst College..."
-      when "2"
-        puts "More info on Illinois State University..."
-      when "3"
-        puts "More info on Northwester University..."
-      when "4"
-        puts "More info on the University of Chicago..."
-      when "5"
-        puts "More info on the University of Illinois..."
-      when "list"
+      
+      if input.to_i > 0 
+        the_college = @colleges[input.to_i - 1]
+        puts "#{the_college.name} - #{the_college.location} - #{the_college.size}"
+      elsif input == "list"
         list_colleges
       else
         puts "Not sure what you meant, please type 'list' or 'exit'.."
@@ -48,4 +37,3 @@ class IllinoisColleges::CLI
   def goodbye
     puts "Come back anytime to learn more about the colleges and universities in the state of Illinois!"
   end
-end
