@@ -10,7 +10,13 @@ class IllinoisColleges::College
   def self.scrape_colleges
     colleges = []
     
+    colleges << self.scrape_illinois_index_page
+    
     colleges
   end
   
+  def self.scrape_illinois_index_page
+    doc = Nokogiri::HTML(open("https://www.collegesimply.com/colleges/illinois/"))
+    binding.pry 
+  end
 end
