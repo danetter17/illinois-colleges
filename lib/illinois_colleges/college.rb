@@ -18,12 +18,20 @@ class IllinoisColleges::College
   def self.scrape_illinois_index_page
     doc = Nokogiri::HTML(open("https://www.collegesimply.com/colleges/illinois/"))
     
-    binding.pry
+    # binding.pry
     
     doc.xpath("//tr").each do |doc|
-      name = doc.css("td")[0].text.strip
+      if doc.css("td")[0] != nil
+        name = doc.css("td")[0].text.strip
+      end
+      
+      if doc.css("td")[1] != nil
       location = doc.css("td")[1].text.strip
+      end
+      
+      if doc.css('table.table tbody tr td:nth-child(1) a')[0] != nil
       link = doc.css('table.table tbody tr td:nth-child(1) a')[0]['href']
+      end
     end
   end
 end
