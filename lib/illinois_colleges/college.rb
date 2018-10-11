@@ -20,18 +20,21 @@ class IllinoisColleges::College
     
     # binding.pry
     
+    college = self.new
+    
     doc.xpath("//tr").each do |doc|
       if doc.css("td")[0] != nil
-        name = doc.css("td")[0].text.strip
+        college.name = doc.css("td")[0].text.strip
       end
       
       if doc.css("td")[1] != nil
-      location = doc.css("td")[1].text.strip
+        college.location = doc.css("td")[1].text.strip
       end
       
       if doc.css('table.table tbody tr td:nth-child(1) a')[0] != nil
-      link = doc.css('table.table tbody tr td:nth-child(1) a')[0]['href']
+        college.link = doc.css('table.table tbody tr td:nth-child(1) a')[0]['href']
       end
     end
+    college
   end
 end
