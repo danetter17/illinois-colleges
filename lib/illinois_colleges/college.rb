@@ -8,9 +8,7 @@ class College
   end
   
   def self.scrape_colleges
-    colleges = []
-    
-    colleges << self.scrape_illinois_index_page
+    colleges = self.scrape_illinois_index_page
     
     colleges
   end
@@ -20,9 +18,10 @@ class College
     
     # binding.pry
     
-    college = self.new
+    colleges = []
     
     doc.xpath("//tr").each do |doc|
+      college = self.new
       if doc.css("td")[0] != nil
         college.name = doc.css("td")[0].text.strip
         puts college.name
@@ -37,7 +36,8 @@ class College
         college.link = doc.css('table.table tbody tr td:nth-child(1) a')[0]['href']
         puts college.link
       end
+      colleges << college
     end
-    college
+    colleges
   end
 end

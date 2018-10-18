@@ -11,8 +11,8 @@ class CLI
   def list_colleges
     puts "Colleges and universities in the state of Illinois:"
     @colleges = College.college
-    @colleges.each.with_index(1) {|college, i|
-      puts "#{i}. #{college.name} - #{college.location}"}
+    @colleges.each.with_index(1) do |college, i|
+      puts "#{i}. #{college.name} - #{college.location}"
     end
   end
   
@@ -36,3 +36,4 @@ class CLI
   def goodbye
     puts "Come back anytime to learn more about the colleges and universities in the state of Illinois!"
   end
+end
