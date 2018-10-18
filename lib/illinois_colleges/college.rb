@@ -1,4 +1,4 @@
-class IllinoisColleges::College
+class College
   attr_accessor :name, :location, :size, :type, :url
   
   def self.college

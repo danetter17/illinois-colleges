@@ -1,6 +1,6 @@
 # CLI controller
 
-class IllinoisColleges::CLI 
+class CLI 
   
   def call
     list_colleges
@@ -10,10 +10,9 @@ class IllinoisColleges::CLI
   
   def list_colleges
     puts "Colleges and universities in the state of Illinois:"
-    
-    @colleges = IllinoisColleges::College.college
+    @colleges = College.college
     @colleges.each.with_index(1) {|college, i|
-      puts "#{i}. #{college.name} - #{college.location} - #{college.size}"}
+      puts "#{i}. #{college.name} - #{college.location}"}
     end
   end
   
