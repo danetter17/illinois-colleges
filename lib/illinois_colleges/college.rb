@@ -1,5 +1,6 @@
 class College
   attr_accessor :name, :location, :size, :type, :url
+  BASE_PATH = "https://www.collegesimply.com/colleges/illinois/"
   
   def self.college
     # Will return a bunch of instances of colleges 
@@ -14,7 +15,7 @@ class College
   end
   
   def self.scrape_illinois_index_page
-    doc = Nokogiri::HTML(open("https://www.collegesimply.com/colleges/illinois/"))
+    doc = Nokogiri::HTML(open(BASE_PATH))
     
     # binding.pry
     
@@ -37,4 +38,8 @@ class College
     end
     colleges
   end
+  
+  def scrape_college_info
+    doc = Nokogiri::HTML(open(BASE_PATH + college.link))
+
 end
