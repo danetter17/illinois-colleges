@@ -11,7 +11,7 @@ class CLI
   def list_colleges
     puts "Colleges and universities in the state of Illinois:"
     @colleges = College.college
-    @colleges.each.with_index(1) do |college, i|
+    @colleges.drop(1).each.with_index(1) do |college, i|
       puts "#{i}. #{college.name} - #{college.location}"
     end
   end
@@ -23,7 +23,7 @@ class CLI
       input = gets.strip.downcase
       
       if input.to_i > 0 
-        the_college = @colleges[input.to_i - 1]
+        the_college = @colleges[input.to_i]
         puts "#{the_college.name} - #{the_college.location} - #{the_college.size}"
       elsif input == "list"
         list_colleges

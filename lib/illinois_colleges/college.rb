@@ -24,17 +24,14 @@ class College
       college = self.new
       if doc.css("td")[0] != nil
         college.name = doc.css("td")[0].text.strip
-        puts college.name
       end
       
       if doc.css("td")[1] != nil
         college.location = doc.css("td")[1].text.strip
-        puts college.location
       end
       
       if doc.css('table.table tbody tr td:nth-child(1) a')[0] != nil
         college.link = doc.css('table.table tbody tr td:nth-child(1) a')[0]['href']
-        puts college.link
       end
       colleges << college
     end
