@@ -39,7 +39,7 @@ class College
     colleges
   end
   
-  def scrape_college_info
-    doc = Nokogiri::HTML(open(BASE_PATH + college.link))
-
+  def scrape_college_info(college)
+    doc = Nokogiri::HTML(open(BASE_PATH + "#{college.link}"))
+  end
 end
