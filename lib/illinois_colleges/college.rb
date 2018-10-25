@@ -32,14 +32,16 @@ class College
       end
       
       if doc.css('table.table tbody tr td:nth-child(1) a')[0] != nil
-        college.link = doc.css('table.table tbody tr td:nth-child(1) a')[0]['href']
+        college.url = doc.css('table.table tbody tr td:nth-child(1) a')[0]['href']
       end
       colleges << college
     end
     colleges
   end
   
-  def scrape_college_info(college)
-    doc = Nokogiri::HTML(open(BASE_PATH + "#{college.link}"))
+  def self.scrape_college_info(college)
+    doc = Nokogiri::HTML(open(BASE_PATH + "#{college.url}"))
+    binding.pry
+    college.size = doc.css('div.card').css('div.card-body')
   end
 end
