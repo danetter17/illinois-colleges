@@ -1,8 +1,6 @@
 # IllinoisColleges
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/illinois_colleges`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Interactive CLI gem that welcomes the user and outputs a numbered list of the colleges and universities in Illinois, which allows you to select a college to see the city it resides in.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Once installed, run the program by inputting './bin/illinois-colleges' to the terminal then follow the prompts.
 
 ## Development
 
