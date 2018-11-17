@@ -38,10 +38,4 @@ class College
     end
     colleges
   end
-  
-  def self.scrape_college_info(college)
-    doc = Nokogiri::HTML(open(BASE_PATH + "#{college.url}"))
-    binding.pry
-    college.size = doc.css('div.card').css('div.card-body')
-  end
 end
