@@ -43,3 +43,4 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "nokogiri"
 end
+

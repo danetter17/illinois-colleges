@@ -3,10 +3,8 @@
 class CLI 
   
   def call
+    Scraper.scrape_colleges
     welcome
-    list_colleges
-    menu
-    goodbye
   end
   
   def welcome
@@ -41,7 +39,9 @@ class CLI
       puts "Please enter the number of the institution that you would like more information on, type 'list' to list the institutions again, or type 'exit':"
       input = gets.strip.downcase
       
-      if input.to_i > 0 
+      #This is where I scrape, only if I haven't already scraped the college. If I have, just return the details
+      
+      if input.to_i > 0 #Checked if it was too little, but need to check if it is too big
         the_college = @colleges[input.to_i]
         puts "#{the_college.name} - #{the_college.location}"
       elsif input == "list"
