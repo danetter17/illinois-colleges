@@ -41,8 +41,8 @@ class CLI
 
       #This is where I scrape, only if I haven't already scraped the college. If I have, just return the details
 
-      if input.to_i > 0 #Checked if it was too little, but need to check if it is too big
-        the_college = @colleges[input.to_i]
+      if input.to_i > 0 && input.to_i < @colleges.length || input.to_i == @colleges.length#Checked if it was too little, but need to check if it is too big
+        the_college = @colleges[input.to_i - 1]
         puts "#{the_college.name} - #{the_college.location}"
       elsif input == "list"
         list_colleges
