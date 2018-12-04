@@ -1,15 +1,13 @@
 class Scraper
-  BASE_PATH = "https://www.collegesimply.com/colleges/illinois/"
+  BASE_PATH = "https://www.collegesimply.com"
 
 
   def self.scrape_colleges
-    doc = Nokogiri::HTML(open("https://www.collegesimply.com"))
+    doc = Nokogiri::HTML(open("https://www.collegesimply.com/colleges/illinois/"))
 
-    # binding.pry
-
+    colleges = []
     doc.xpath("//tr").drop(1).each do |college_doc|
-      binding.pry
-      college = self.new
+      college = College.new
       if college_doc.css("td")[0] != nil
         college.name = college_doc.css("td")[0].text.strip
       end
@@ -17,18 +15,18 @@ class Scraper
       if college_doc.css("td")[1] != nil
         college.location = college_doc.css("td")[1].text.strip
       end
-      #binding.pry
 
       if college_doc.css('td')[0].css('a').attr('href') != nil
         college.url = college_doc.css('td')[0].css('a').attr('href')
       end
+      colleges << college
     end
   end
 
   def self.scrape_college_detail(college)
     puts 'Scraping College'
-    #
-
+    doc = Nokogiri::HTML(open(BASE_PATH + college.url))
+    
   end
 
 end
