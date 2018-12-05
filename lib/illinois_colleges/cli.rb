@@ -3,7 +3,7 @@
 class CLI
 
   def call
-    Scraper.scrape_colleges
+    Scraper.scrape_colleges if @colleges == nil
     welcome
   end
 
@@ -41,9 +41,14 @@ class CLI
 
       #This is where I scrape, only if I haven't already scraped the college. If I have, just return the details
 
-      if input.to_i > 0 && input.to_i < @colleges.length || input.to_i == @colleges.length#Checked if it was too little, but need to check if it is too big
+      if input.to_i > 0 && input.to_i <= @colleges.length #Checked if it was too small, but need to check if it is too big
         the_college = @colleges[input.to_i - 1]
+        the_college.details ||= Scraper.scrape_college_detail(the_college) 
         puts "#{the_college.name} - #{the_college.location}"
+        puts "Type: #{the_college.details[:type]}"
+        puts "Size: #{the_college.details[:size]}"
+        puts "Profit-status: #{the_college.details[:profit_status]}"
+        puts "Degrees Offered: #{the_college.details[:degrees_offered]}"
       elsif input == "list"
         list_colleges
       elsif input == "exit"
