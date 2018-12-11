@@ -3,20 +3,18 @@ class Scraper
 
 
   def self.scrape_colleges
-    p "scrape_colleges has been called"
     doc = Nokogiri::HTML(open("https://www.collegesimply.com/colleges/illinois/"))
 
     colleges = []
+    
     doc.xpath("//tr").drop(1).each do |college_doc|
       college = College.new
       if college_doc.css("td")[0] != nil
         college.name = college_doc.css("td")[0].text.strip
       end
-
       if college_doc.css("td")[1] != nil
         college.location = college_doc.css("td")[1].text.strip
       end
-
       if college_doc.css('td')[0].css('a').attr('href') != nil
         college.url = college_doc.css('td')[0].css('a').attr('href')
       end
@@ -25,7 +23,6 @@ class Scraper
   end
 
   def self.scrape_college_detail(college)
-    p "scraping details has been called"
     details = {}
     puts 'Scraping College'
     doc = Nokogiri::HTML(open(BASE_PATH + college.url))

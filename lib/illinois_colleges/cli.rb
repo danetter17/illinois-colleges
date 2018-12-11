@@ -27,8 +27,7 @@ class CLI
 
   def list_colleges
     puts "Colleges and universities in the state of Illinois:"
-    @colleges = College.all
-    @colleges.each_with_index do |college, i|
+    College.all.each_with_index do |college, i|
       puts "#{i + 1}. #{college.name}"
     end
   end
@@ -39,10 +38,8 @@ class CLI
       puts "Please enter the number of the institution that you would like more information on, type 'list' to list the institutions again, or type 'exit':"
       input = gets.strip.downcase
 
-      #This is where I scrape, only if I haven't already scraped the college. If I have, just return the details
-
-      if input.to_i > 0 && input.to_i <= @colleges.length #Checked if it was too small, but need to check if it is too big
-        the_college = @colleges[input.to_i - 1]
+      if input.to_i > 0 && input.to_i <= Colleges.all.length #Checked if it was too small, but need to check if it is too big
+        the_college = College.all[input.to_i - 1]
         the_college.details ||= Scraper.scrape_college_detail(the_college) 
         puts "#{the_college.name} - #{the_college.location}"
         puts "Type: #{the_college.details[:type]}"

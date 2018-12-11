@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "illinois_colleges"
+require_relative "../lib/illinois_colleges"
+
 CLI.new.call
